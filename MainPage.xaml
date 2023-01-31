@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:collections="clr-namespace:System.Collections.Generic;assembly=System.Collections"
+             x:Class="MauiApp3.MainPage">
+
+    <VerticalStackLayout
+        IsVisible="True"
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+        <Button Text="Toggle StackLayout visibility"
+                Pressed="Button_Pressed" />
+
+        <VerticalStackLayout
+            x:Name="Container"
+            IsVisible="False"
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <CarouselView x:Name="Carousel"
+                          IndicatorView="Indicator"
+                          VerticalOptions="Center"
+                          PeekAreaInsets="30"
+                          HeightRequest="220"
+                          Loop="False">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="10"
+                                       SnapPointsType="Mandatory"
+                                       SnapPointsAlignment="Center" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemsSource>
+                    <collections:List x:TypeArguments="x:String">
+                        <x:String>dotnet_bot</x:String>
+                        <x:String>dotnet_bot</x:String>
+                        <x:String>dotnet_bot</x:String>
+                    </collections:List>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="220">
+                            <Border Padding="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="MediumVioletRed">
+                                <Image Source="{Binding .}"
+                                       HorizontalOptions="Center" />
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="Indicator"
+                           HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
